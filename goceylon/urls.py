@@ -26,9 +26,12 @@ from ocr.views import (
     ocr_dashboard_view,
 )
 
+from catalogue.views import catalogue_view,index_view,home_view,navigation_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', RedirectView.as_view(pattern_name='catalogue-view', permanent=True)),
     path('catalogue/', catalogue_view, name='catalogue-view'),
-    path('translate/', ocr_dashboard_view, name='ocr-dashboard'),
+    path('index/', index_view, name='index-view'),
+    path('home/', home_view, name='home-view'),
+    path('navigation/', navigation_view, name='navigation-view'),
 ]
