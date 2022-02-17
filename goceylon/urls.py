@@ -31,6 +31,7 @@ from catalogue.views import catalogue_view,index_view,home_view,navigation_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalogue/', catalogue_view, name='catalogue-view'),
+    path('', index_view, name='index-view'),
     path('index/', index_view, name='index-view'),
     path('home/', home_view, name='home-view'),
     path('navigation/', navigation_view, name='navigation-view'),
