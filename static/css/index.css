@@ -85,7 +85,7 @@ body {
     border-radius: 60px;
     overflow: hidden;
     width: 100%;
-    margin-top: -90px;
+    margin-top: -40px;
   }
   .progress-bar span {
     display: block;
@@ -126,6 +126,7 @@ body {
 @media only screen and (max-width: 720px) {
     .image {
       padding: 250px 0px;
+      margin: 20px;
     }  
   
 
