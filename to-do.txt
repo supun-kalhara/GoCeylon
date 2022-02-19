@@ -6,5 +6,3 @@
     -translate page
 
 -Build User login system .
-
--Configure root folder for media files.
