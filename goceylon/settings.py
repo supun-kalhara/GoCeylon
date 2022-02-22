@@ -26,10 +26,7 @@ SECRET_KEY = 'a$+jxf9twh)7!ghj*jtfe3iar5b^cfzmmw_)t0jfn8d7$-qg&b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "192.168.1.2"
-    ]
+ALLOWED_HOSTS = ['192.168.1.2','192.168.137.215','192.168.1.9','127.0.0.1']
 
 
 # Application definition
@@ -46,6 +43,8 @@ INSTALLED_APPS = [
     'catalogue',
     'ocr',
 ]
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,6 +120,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Base url to serve media files
+MEDIA_URL = '/media/'
+
+# Path where media is stored
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media/')
+
+# Cache config for django-bootstrap-icons
+BS_ICONS_CACHE = os.path.join(MEDIA_ROOT, 'icon_cache')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
