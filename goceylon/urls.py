@@ -36,9 +36,10 @@ urlpatterns = [
     path('', index_view),
     path('index/', index_view, name='index-view'),
     path('home/', home_view, name='home-view'),
-    path('base/', base_view, name='base-view'),
     path('login/', login_view, name='login-view'),
     path('destination/', destination_view, name='account-view'),
+    
+    #path('base/', base_view, name='base-view'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
