@@ -26,13 +26,14 @@ from ocr.views import (
     ocr_dashboard_view,
 )
 
-from catalogue.views import catalogue_view,index_view,home_view,navigation_view
+from catalogue.views import catalogue_view,index_view,home_view,base_view,login_view,destination_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalogue/', catalogue_view, name='catalogue-view'),
-    path('', index_view, name='index-view'),
     path('index/', index_view, name='index-view'),
     path('home/', home_view, name='home-view'),
-    path('navigation/', navigation_view, name='navigation-view'),
+    path('base/', base_view, name='base-view'),
+    path('login/', login_view, name='account-view'),
+    path('destination/', destination_view, name='account-view'),
 ]

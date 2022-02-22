@@ -53,9 +53,9 @@
 .navbar ul {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(6,100px);
+  grid-template-columns: repeat(5,100px);
   justify-self: end;
-  margin-right: -100px;
+  margin-right: -105px;
   
 }
 
@@ -70,7 +70,9 @@
 
 .nav-item a:hover {
   color: #3498db;
+  
 }
+
 
 
 .navbar-button {
