@@ -35,7 +35,6 @@ urlpatterns = [
     path('catalogue/', catalogue_view, name='catalogue-view'),
     path('index/', index_view, name='index-view'),
     path('home/', home_view, name='home-view'),
-    path('navigation/', navigation_view, name='navigation-view'),
     path('base/', base_view, name='base-view'),
     path('login/', login_view, name='account-view'),
     path('destination/', destination_view, name='account-view'),
