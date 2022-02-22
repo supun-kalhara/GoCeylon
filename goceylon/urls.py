@@ -33,10 +33,11 @@ from catalogue.views import catalogue_view,index_view,home_view,base_view,login_
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalogue/', catalogue_view, name='catalogue-view'),
+    path('', index_view),
     path('index/', index_view, name='index-view'),
     path('home/', home_view, name='home-view'),
     path('base/', base_view, name='base-view'),
-    path('login/', login_view, name='account-view'),
+    path('login/', login_view, name='login-view'),
     path('destination/', destination_view, name='account-view'),
 ]
 
