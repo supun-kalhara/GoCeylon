@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/navigation-bar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
 
@@ -24,10 +24,9 @@
             </div>
             <ul class="nav navbar-button">
                 <li class="nav-item"><a href="{% url 'home-view' %}">Home</a></li>
-                <li class="nav-item"><a href="#">About</a></li>
                 <li class="nav-item"><a href="#">Translate</a></li>
                 <li class="nav-item"><a href="{% url 'catalogue-view' %}">Catalogue</a></li>
-                <li class="nav-item"><a href="#">Login</a></li>
+                <li class="nav-item"><a href="{% url 'account-view' %}">Login</a></li>
             </ul>
         </nav>
     </div>
@@ -39,11 +38,6 @@
 </body>
 
 
-
-
-
-
-    
 {% block content %}
     
 {% endblock %}
@@ -54,6 +48,6 @@
 </footer>
 
 
-<script src="{% static '/js/navigation-bar.js' %}"></script>
+<script src="{% static '/js/base.js' %}"></script>
 
 </html>
