@@ -21,6 +21,7 @@ from django.views.generic.base import RedirectView
 
 
 from catalogue.views import (
+    Rate,
     catalogue_view,
 )
 
@@ -28,7 +29,7 @@ from ocr.views import (
     ocr_dashboard_view,
 )
 
-from catalogue.views import catalogue_view,index_view,home_view,navigation_view
+from catalogue.views import catalogue_view,index_view,home_view,navigation_view,Rate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,6 +38,7 @@ urlpatterns = [
     path('index/', index_view, name='index-view'),
     path('home/', home_view, name='home-view'),
     path('navigation/', navigation_view, name='navigation-view'),
+    path('<d_id>/rate', Rate, name='rate-destination'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

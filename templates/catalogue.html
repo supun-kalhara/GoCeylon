@@ -19,66 +19,21 @@
   <div class="main">
     <h1>LOCATIONS</h1>
     <ul class="cards">
+      {% for i in destinations %}
       <li class="cards_item">
         <div class="card">
-          <div class="card_image"><img src="{% static '/img/NineArchBridge.jpg' %}"></div>
+          <div class="card_image"><img src="{{ i.image.url }}"></div>
           <div class="card_content">
-            <h2 class="card_title">Nine Arch Bridge</h2>
-            <p class="card_text">The Nine Arches Bridge also called the Bridge in the Sky, is a viaduct bridge in Sri Lanka. It is one of the best examples of colonial-era railway construction. </p>
+            <h2 class="card_title">{{ i.name }}</h2>
+            <p class="card_text">{{ i.description }} 
+              <a href ="{% url 'rate-destination' i.id %}">Rate here</a>
+            </p>
             <button class="btn card_btn">Read More</button>
           </div>
         </div>
       </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img src="{% static '/img/SigiriyaRock.jpg' %}"></div>
-          <div class="card_content">
-            <h2 class="card_title">Sigiriya Rock</h2>
-            <p class="card_text">Sigiriya or Sinhagiri is an ancient rock fortress located in the northern Matale District near the town of Dambulla in the Central Province, Sri Lanka.</p>
-            <button class="btn card_btn">Read More</button>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img src="{% static '/img/NilaveliBeach.jpg' %}"></div>
-          <div class="card_content">
-            <h2 class="card_title">Nilaveli Beach</h2>
-            <p class="card_text">Nilaveli is a coastal resort town and suburb of the Trincomalee District, Sri Lanka located 16 km northwest of the city of Trincomalee.</p>
-            <button class="btn card_btn">Read More</button>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img src="{% static '/img/Ambuluwawa.jpg' %}"></div>
-          <div class="card_content">
-            <h2 class="card_title">Ambuluwawa</h2>
-            <p class="card_text">Hilltop place of worship with an unusual tower combining architecture styles of many religions. In the central highlands of Sri Lanka.</p>
-            <button class="btn card_btn">Read More</button>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img src="{% static '/img/YalaNationalPark.jpg' %}"></div>
-          <div class="card_content">
-            <h2 class="card_title">Yala National Park </h2>
-            <p class="card_text">Yala was designated as a wildlife sanctuary in 1900, and, along with Wilpattu was one of the first two national parks in Sri Lanka.</p>
-            <button class="btn card_btn">Read More</button>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img src="{% static '/img/TheTempleOfTheToothRelic.jpg' %}"></div>
-          <div class="card_content">
-            <h2 class="card_title">The Temple of the Tooth Relic</h2>
-            <p class="card_text">Temple of the Sacred Tooth Relic or Sri Dalada Maligawa; commonly known as the ශ්‍රී දළදා මාළිගාව, is a Buddhist temple in Kandy.</p>
-            <button class="btn card_btn">Read More</button>
-          </div>
-        </div>
-      </li>
+      {% endfor %}
+      
     </ul>
   </div>
   
