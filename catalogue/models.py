@@ -22,6 +22,8 @@ RATE_CHOICES = [
      (4, 'bad'),
      (5, 'worse'),
 ]
+      
+
 class Review(models.Model):
      
      text = models.CharField(max_length=3000, blank=True)
@@ -35,6 +37,8 @@ class Review(models.Model):
 
 
 
+
+      
 class Admin(models.Model):
      firstName = models.CharField(max_length=254, null=True)
      lastName = models.CharField(max_length=1000, null=True)
