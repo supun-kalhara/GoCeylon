@@ -23,3 +23,8 @@ def login_view(request, *args, **kwargs):
 #Destination Page
 def destination_view(request, *args, **kwargs):
     return render(request, "destination.html", {})   
+
+
+#dashboard Page
+def dashboard_view(request, *args, **kwargs):
+    return render(request, "dashboard.html", {})
