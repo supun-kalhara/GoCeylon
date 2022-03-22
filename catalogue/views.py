@@ -23,9 +23,9 @@ def catalogue_view(request, *args, **kwargs):
 def index_view(request, *args, **kwargs):
     return render(request, "index.html", {}) 
 
-#Navigation Bar
-def navigation_view(request, *args, **kwargs):
-    return render(request, "navigation-bar.html", {}) 
+#Base Page
+def base_view(request, *args, **kwargs):
+    return render(request, "base.html", {}) 
 
 #Home Page
 def home_view(request, *args, **kwargs):
@@ -59,3 +59,10 @@ def Rate(request, d_id):
         'destination':destinations,
     }
     return HttpResponse(template.render(context,request)) 
+    
+def login_view(request, *args, **kwargs):
+    return render(request, "login.html", {})     
+
+#Destination Page
+def destination_view(request, *args, **kwargs):
+    return render(request, "destination.html", {})   

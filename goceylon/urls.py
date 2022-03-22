@@ -16,9 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
-from django.conf import settings
 from django.views.generic.base import RedirectView
-
 
 from catalogue.views import (
     Rate,
@@ -29,16 +27,18 @@ from ocr.views import (
     ocr_dashboard_view,
 )
 
-from catalogue.views import catalogue_view,index_view,home_view,navigation_view,Rate
+from catalogue.views import catalogue_view, index_view, home_view, base_view, login_view, destination_view, navigation_view, Rate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalogue/', catalogue_view, name='catalogue-view'),
-    path('', index_view, name='index-view'),
     path('index/', index_view, name='index-view'),
     path('home/', home_view, name='home-view'),
     path('navigation/', navigation_view, name='navigation-view'),
     path('<d_id>/rate', Rate, name='rate-destination'),
+    path('base/', base_view, name='base-view'),
+    path('login/', login_view, name='login-view'),
+    path('destination/', destination_view, name='destination-view'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
