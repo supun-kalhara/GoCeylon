@@ -5,29 +5,27 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/navigation-bar.css' %}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+    <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+    <script src="{% static '/js/base.min.js' %}"></script>
 
 </head>
 
 <body>
     
-    <div class="nav-wrapper">
+    <div class="nav-wrapper1">
         <div class="grad-bar"></div>
-        <nav class="navbar">
+        <nav class="navbar1">
             <a href="{% url 'home-view' %}"> <img src="{% static '/img/GoCeylonV.svg' %}"></a>
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-            <ul class="nav navbar-button">
-                <li class="nav-item"><a href="{% url 'home-view' %}">Home</a></li>
-                <li class="nav-item"><a href="#">About</a></li>
-                <li class="nav-item"><a href="#">Translate</a></li>
-                <li class="nav-item"><a href="{% url 'catalogue-view' %}">Catalogue</a></li>
-                <li class="nav-item"><a href="#">Login</a></li>
+            <ul class="nav navbar1-button">
+                <li class="nav-item1"><a href="{% url 'home-view' %}">Home</a></li>
+                <li class="nav-item1"><a href="#">Translate</a></li>
+                <li class="nav-item1"><a href="{% url 'catalogue-view' %}">Catalogue</a></li>
+                <li class="nav-item1"><a href="{% url 'login-view' %}">Login</a></li>
             </ul>
         </nav>
     </div>
@@ -39,11 +37,6 @@
 </body>
 
 
-
-
-
-
-    
 {% block content %}
     
 {% endblock %}
@@ -53,7 +46,6 @@
     <p>Copyright &copy; 2022 <img src="{% static '/img/GoCeylonVLN.png' %}" alt="logo"> All Rights Reserved.</p>
 </footer>
 
-
-<script src="{% static '/js/navigation-bar.js' %}"></script>
+<script src="{% static '/js/base.js' %}"></script>
 
 </html>
