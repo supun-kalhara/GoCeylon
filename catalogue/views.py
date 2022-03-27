@@ -23,3 +23,7 @@ def login_view(request, *args, **kwargs):
 #Destination Page
 def destination_view(request, *args, **kwargs):
     return render(request, "destination.html", {})   
+
+#Recommendation Page
+def recommendation_view(request, *args, **kwargs):
+    return render(request, "recommendation.html", {})       
