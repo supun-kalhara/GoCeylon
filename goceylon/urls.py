@@ -29,6 +29,7 @@ from catalogue.views import (
     base_view,
     login_view,
     logout_user,
+    dashboard_view,
 )
 
 urlpatterns = [
@@ -43,6 +44,7 @@ urlpatterns = [
     path('login/', login_view, name='login-view'),
     path('logout/', logout_user, name='logout'),
     path('<d_id>/destination', destination_view, name='destination-view'),
+    path('dashboard/', dashboard_view, name='dashboard-view'),
 
 ]
 
