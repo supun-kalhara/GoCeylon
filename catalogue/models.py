@@ -1,6 +1,7 @@
 from cgitb import text
 from msilib.schema import SelfReg
 from random import choices
+from unicodedata import name
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -14,6 +15,13 @@ class Destination(models.Model):
 
      def __str__(self):
           return self.name
+
+class DestinationImage(models.Model):
+     destination=models.ForeignKey(Destination, default=None, on_delete=models.CASCADE)
+     images=models.FileField(upload_to='static/images/')
+
+     def __str__(self):
+          return self.destination.name
 
 RATE_CHOICES = [
      (1, 'Best'),

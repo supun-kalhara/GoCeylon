@@ -1,13 +1,17 @@
 from audioop import reverse
 from cgitb import text
+from math import fabs
+from django.contrib import messages
+from multiprocessing import context
 from unittest import loader
 from xml.etree.ElementTree import Comment
-from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 
 from django.template import loader,RequestContext,Template
 
-from catalogue.forms import RateForm
+from catalogue.forms import CreateUserForm, RateForm
 
 
 from .models import *
@@ -23,9 +27,9 @@ def catalogue_view(request, *args, **kwargs):
 def index_view(request, *args, **kwargs):
     return render(request, "index.html", {}) 
 
-#Navigation Bar
-def navigation_view(request, *args, **kwargs):
-    return render(request, "navigation-bar.html", {}) 
+#Base Page
+def base_view(request, *args, **kwargs):
+    return render(request, "base.html", {}) 
 
 #Home Page
 def home_view(request, *args, **kwargs):
@@ -49,7 +53,10 @@ def Rate(request, d_id):
             rate.user = user
             rate.destination = destinations
             
-            rate.save()       
+            rate.save()
+            
+           
+                 
     else:
         form = RateForm()
 
@@ -59,3 +66,53 @@ def Rate(request, d_id):
         'destination':destinations,
     }
     return HttpResponse(template.render(context,request)) 
+
+ 
+#sign-in view
+def register_view(request):
+    form=CreateUserForm()
+
+    if request.method =='POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login-view')
+    else:
+        form=CreateUserForm()
+        
+    context = {'form':form}
+    return render(request,'login.html',context)
+
+#login view
+def login_view(request, *args, **kwargs):
+    context = {}
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home-view')
+        else:
+            messages.info(request, 'Username or Password is incorrect ' + username + ' ' + password)
+            return render(request, "login.html", context)
+    return render(request, "login.html", {})   
+    #add the login process here  
+
+#Destination Page
+def destination_view(request,d_id):
+    #destinations = Destination.objects.get(id=d_id)
+    destination = get_object_or_404(Destination, id=d_id)
+    dImages= DestinationImage.objects.filter(destination=destination)
+    review_count=len(Review.objects.filter(destination=destination))
+    reviews=Review.objects.filter(destination=destination)
+    template = loader.get_template('destination.html') 
+    context = {
+        'destination':destination,
+        'dImages' :dImages,
+        'review_count': review_count,
+        'reviews' :reviews
+    }
+    return HttpResponse(template.render(context,request))
+
+      

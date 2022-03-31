@@ -1,7 +1,6 @@
-{% extends 'navigation-bar.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-
 
 {% load static %}
 
@@ -20,18 +19,20 @@
     <h1>LOCATIONS</h1>
     <ul class="cards">
       {% for i in destinations %}
+      
       <li class="cards_item">
         <div class="card">
           <div class="card_image"><img src="{{ i.image.url }}"></div>
           <div class="card_content">
             <h2 class="card_title">{{ i.name }}</h2>
             <p class="card_text">{{ i.description }} 
-              <a href ="{% url 'rate-destination' i.id %}">Rate here</a>
+             
             </p>
-            <button class="btn card_btn">Read More</button>
+            <a href="{% url 'destination-view' i.id %}" class ="btn card_btn" >Read More</a>
           </div>
         </div>
       </li>
+       
       {% endfor %}
       
     </ul>

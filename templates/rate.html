@@ -1,4 +1,4 @@
-{% extends 'navigation-bar.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
@@ -17,6 +17,8 @@
         <div class="input-field review-form">
           {{ form.rate }}
         </div>
+
+        
         <div class="input-field review-form ">
           {{ form.text }}
           <label for="textarea1">Opinion</label>
