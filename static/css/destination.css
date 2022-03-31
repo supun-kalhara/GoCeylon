@@ -139,13 +139,7 @@
   .rate:not(:checked) > label:hover ~ label {
 	color: #deb217;
   }
-  .rate > input:checked + label:hover,
-  .rate > input:checked + label:hover ~ label,
-  .rate > input:checked ~ label:hover,
-  .rate > input:checked ~ label:hover ~ label,
-  .rate > label:hover ~ input:checked ~ label {
-	color: #c59b08;
-  }
+
   .product-dtl p {
 	font-size: 15px;
 	line-height: 24px;

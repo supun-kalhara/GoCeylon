@@ -13,29 +13,40 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 
 from catalogue.views import (
+    Rate,
     catalogue_view,
+    destination_view,
+    register_view,
+    index_view,
+    home_view,
+    base_view,
+    login_view,
+    logout_user,
 )
-
-from ocr.views import (
-    ocr_dashboard_view,
-)
-
-from catalogue.views import catalogue_view,index_view,home_view,base_view,login_view,destination_view,dashboard_view
 
 urlpatterns = [
+    path('',index_view, name='index-view'),
     path('admin/', admin.site.urls),
     path('catalogue/', catalogue_view, name='catalogue-view'),
     path('index/', index_view, name='index-view'),
     path('home/', home_view, name='home-view'),
+    path('<d_id>/rate', Rate, name='rate-destination'),
     path('base/', base_view, name='base-view'),
+    path('register/',register_view, name='register-view'),
     path('login/', login_view, name='login-view'),
-    path('destination/', destination_view, name='destination-view'),
-    path('dashboard/', dashboard_view, name='dashboard-view'),
+    path('logout/', logout_user, name='logout'),
+    path('<d_id>/destination', destination_view, name='destination-view'),
 
 ]
+
+urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
