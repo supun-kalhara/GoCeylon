@@ -1,8 +1,2 @@
--Build the models for Entries in the catalogue.
-
--Build the front end for the main two pages.
-    -header
-    -catalogue pages
-    -translate page
 
 -Build User login system .

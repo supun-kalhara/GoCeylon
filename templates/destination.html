@@ -10,76 +10,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static '/css/destination.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
-
 </head>
 
 <body>
-
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
-
-<!------ Include the above in your HEAD tag ---------->
-
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  
 <div class="pd-wrap">
   <div class="container">
     <div class="heading-section">
-      <h2>Product Details</h2>
+      <h2>Ambuluwawa</h2>
     </div>
+ 
     <div class="row">
       <div class="col-md-6">
+        <div class="item1">
         <div id="slider" class="owl-carousel product-slider">
           <div class="item">
-            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+            <img src="{% static '/img/NineArchBridge.jpg' %}" />
           </div>
           <div class="item">
-            <img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
+            <img src="{% static '/img/SigiriyaRock.jpg' %}" />
           </div>
           <div class="item">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+            <img src="{% static '/img/NilaveliBeach.jpg' %}" />
           </div>
           <div class="item">
-            <img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
+            <img src="{% static '/img/Ambuluwawa.jpg' %}"/>
           </div>
           <div class="item">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+            <img src="{% static '/img/Ambuluwawa.jpg' %}"/>
           </div>
           <div class="item">
-            <img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
+            <img src="{% static '/img/YalaNationalPark.jpg' %}"/>
           </div>
           <div class="item">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+            <img src="{% static '/img/TheTempleOfTheToothRelic.jpg' %}" />
           </div>
         </div>
         <div id="thumb" class="owl-carousel product-thumb">
           <div class="item">
-            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+            <img src="{% static '/img/NineArchBridge.jpg' %}"/>
           </div>
           <div class="item">
-            <img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
+            <img src="{% static '/img/YalaNationalPark.jpg' %}" />
           </div>
           <div class="item">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+            <img src="{% static '/img/Ambuluwawa.jpg' %}" />
           </div>
           <div class="item">
-            <img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
+            <img src="{% static '/img/NilaveliBeach.jpg' %}" />
           </div>
           <div class="item">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+            <img src="{% static '/img/SigiriyaRock.jpg' %}"/>
           </div>
           <div class="item">
-            <img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
+            <img src="{% static '/img/NineArchBridge.jpg' %}" />
           </div>
           <div class="item">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+            <img src="{% static '/img/TheTempleOfTheToothRelic.jpg' %}"/>
           </div>
         </div>
+      </div>
       </div>
       <div class="col-md-6">
         <div class="product-dtl">
           <div class="product-info">
-            <div class="product-name">Variable Product</div>
             <div class="reviews-counter">
               <div class="rate">
                 <input type="radio" id="star5" name="rate" value="5" checked />
@@ -95,39 +91,18 @@
               </div>
               <span>3 Reviews</span>
             </div>
-            <div class="product-price-discount"><span>$39.00</span><span class="line-through">$29.00</span></div>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <div class="row">
-            <div class="col-md-6">
-              <label for="size">Size</label>
-              <select id="size" name="size" class="form-control">
-                <option>S</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="color">Color</label>
-              <select id="color" name="color" class="form-control">
-                <option>Blue</option>
-                <option>Green</option>
-                <option>Red</option>
-              </select>
-            </div>
-          </div>
-          <div class="product-count">
-            <label for="size">Quantity</label>
-            <form action="#" class="display-flex">
-              <div class="qtyminus">-</div>
-              <input type="text" name="quantity" value="1" class="qty">
-              <div class="qtyplus">+</div>
-            </form>
-            <a href="#" class="round-black-btn">Add to Cart</a>
+          <p>
+            In the central highlands of Sri Lanka, Ambuluwawa is a wildlife complex and Sri Lanka's first multi-religious sanctuary. The Ambuluwawa Trigonometrical Station, in Gampola, consists of large winding tower resembling a stylized Buddhist stupa, a Hindu kovil, a Muslim mosque and a Christian Church.
+            Ambuluwawa is a short hike that provides panoramic views of the surrounding mountains, woods, rivers, and cities.
+            Ambuluwawa lies roughly 1,965 feet above the Gampola town level. Ambuluwawa Mountain rises to a height of around 3560 meters above sea level. The tower rises to a height of around 48 meters. The mountain road runs along the serpentine surrounded by mountain landscapes, cliffs and unique plants, which cannot be found anywhere else. Interesting places to visit include three ponds, a sacred Bodhi tree, water Park, stone Park and garden of herbs.  
+          </p>
+          <div class="buttons explore">
+            <a href="#"><button type="button" class="btn btn-lg explorebtn"><i class="material-icons" style="font-size:20px">place</i> &nbspLOCATION</button></a>
           </div>
         </div>
       </div>
+      
     </div>
     <div class="product-info-tabs">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -167,36 +142,19 @@
               <label>Your message</label>
               <textarea class="form-control" rows="10"></textarea>
             </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" name="" class="form-control" placeholder="Name*">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" name="" class="form-control" placeholder="Email Id*">
-                </div>
-              </div>
-            </div>
             <button class="round-black-btn">Submit Review</button>
           </form>
         </div>
       </div>
     </div>
-
-    <div style="text-align:center;font-size:14px;padding-bottom:20px;">Get free icon packs for your next project at <a href="http://iiicons.in/" target="_blank" style="color:#ff5e63;font-weight:bold;">www.iiicons.in</a></div>
-  </div>
+   </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+</div>
 
 </body>
 
 <script src="{% static '/js/destination.js' %}"></script>
 
 </html>
-
 
 {% endblock %}
