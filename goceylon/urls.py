@@ -28,7 +28,7 @@ from catalogue.views import (
     home_view,
     base_view,
     login_view,
-    
+    logout_user,
 )
 
 urlpatterns = [
@@ -41,10 +41,9 @@ urlpatterns = [
     path('base/', base_view, name='base-view'),
     path('register/',register_view, name='register-view'),
     path('login/', login_view, name='login-view'),
+    path('logout/', logout_user, name='logout'),
     path('<d_id>/destination', destination_view, name='destination-view'),
-    
-    
-    
+
 ]
 
 urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

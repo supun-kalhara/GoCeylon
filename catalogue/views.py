@@ -8,6 +8,7 @@ from xml.etree.ElementTree import Comment
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 from django.template import loader,RequestContext,Template
 
@@ -35,12 +36,14 @@ def base_view(request, *args, **kwargs):
 def home_view(request, *args, **kwargs):
     return render(request, "home.html", {})   
 
-#Login Page
-def login_signup_view(request, *args, **kwargs):
-    return render(request, "login_signup.html", {})      
+#Logout Funtion
+def logout_user(request):
+    logout(request)
+    return redirect('login-view')   
 
 
 #Rate Page
+@login_required(login_url='login-view')
 def Rate(request, d_id):
     destinations = Destination.objects.get(id=d_id)
     user = request.user
@@ -49,14 +52,10 @@ def Rate(request, d_id):
         form = RateForm(request.POST)
         if form.is_valid():
             rate = form.save(commit=False)
-           
             rate.user = user
             rate.destination = destinations
-            
-            rate.save()
-            
-           
-                 
+            rate.save()       
+            return redirect('destination-view', d_id=d_id)
     else:
         form = RateForm()
 
@@ -70,35 +69,42 @@ def Rate(request, d_id):
  
 #sign-in view
 def register_view(request):
-    form=CreateUserForm()
-
-    if request.method =='POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login-view')
+    if request.user.is_authenticated:
+        return redirect('home-view')
     else:
         form=CreateUserForm()
-        
-    context = {'form':form}
-    return render(request,'login.html',context)
+
+        if request.method =='POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('login-view')
+        else:
+            form=CreateUserForm()
+            
+        context = {'form':form}
+        return render(request,'login.html',context)
 
 #login view
 def login_view(request, *args, **kwargs):
-    context = {}
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home-view')
-        else:
-            messages.info(request, 'Username or Password is incorrect ' + username + ' ' + password)
-            return render(request, "login.html", context)
-    return render(request, "login.html", {})   
-    #add the login process here  
-
+    if request.user.is_authenticated:
+        return redirect('home-view')
+    else:
+        context = {}
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home-view')
+            else:
+                messages.info(request, 'Username or Password is incorrect ' + username + ' ' + password)
+                #render error messages using syntax in html file
+                #here
+                return render(request, "login.html", context)
+        return render(request, "login.html", {})   
+    
 #Destination Page
 def destination_view(request,d_id):
     #destinations = Destination.objects.get(id=d_id)

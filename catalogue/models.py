@@ -24,11 +24,11 @@ class DestinationImage(models.Model):
           return self.destination.name
 
 RATE_CHOICES = [
-     (1, 'Best'),
-     (2, 'good'),
-     (3, 'okay'),
-     (4, 'bad'),
-     (5, 'worse'),
+     (1, 'Terrible'),
+     (2, 'Bad'),
+     (3, 'Neutral'),
+     (4, 'Good'),
+     (5, 'Amazing'),
 ]
       
 
@@ -38,7 +38,7 @@ class Review(models.Model):
      user = models.ForeignKey(User,null=True,on_delete=models.SET_NULL)
      destination = models.ForeignKey(Destination,null=True,on_delete=models.SET_NULL)
      rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES,null=True)
-     #created_at= models.DateTimeField(auto_now_add=True)
+     created_at= models.DateTimeField(auto_now_add=True, blank=True, null=True)
      
      
      
