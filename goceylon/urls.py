@@ -23,17 +23,13 @@ from catalogue.views import (
     Rate,
     catalogue_view,
     destination_view,
-    register_view
+    register_view,
+    index_view,
+    home_view,
+    base_view,
+    login_view,
     
 )
-
-
-from ocr.views import (
-    ocr_dashboard_view,
-)
-
-from catalogue.views import catalogue_view,index_view,home_view
-from catalogue.views import catalogue_view,index_view,home_view,base_view,login_view,register_view
 
 urlpatterns = [
     path('',index_view, name='index-view'),
