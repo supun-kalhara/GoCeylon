@@ -190,6 +190,7 @@
 	display: inline-block;
 	margin-top: 20px;
 	transition: all 0.5s ease-in-out 0s;
+	border-style: none;
   }
   .round-black-btn:hover,
   .round-black-btn:focus {
@@ -197,6 +198,37 @@
 	color: #ffffff;
 	text-decoration: none;
   }
+
+  .round-black-btn a{
+	  color:white;
+  }
+
+  .comment-tab{
+    padding: 20px;
+    margin: 0px 0px 12px 0px;
+	max-width: 870px;
+    box-shadow: 0 10px 3px rgba(0,0,0,0.19), 0 3px 6px rgba(0,0,0,0.23);
+    overflow-y: auto;
+	}
+
+	.comment-header{
+		color: #47767e;
+		font-weight: bold;
+		font-size: 16px;
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+
+	.comment-content{
+		color:black;
+		margin-bottom: 0;
+		margin-top: 5px;
+	}
+
+	.location-icon{
+		color: #47767e;
+		font-size: 30px;
+	}
 
   .explore .btn-lg {
 	border-radius: 15px;
@@ -8549,6 +8581,7 @@
 	margin-top: 0%;
 	text-align: center;
 	float: left;
+	margin-top: 30px;
 }
 
 

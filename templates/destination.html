@@ -10,8 +10,9 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/destination.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/destination.css' %}">
+    
     
 </head>
 
@@ -28,14 +29,11 @@
         <div class="item1">
         <div id="slider" class="owl-carousel product-slider">
           <div class="card_image"><img src="{{ destination.image.url }}"></div>
-          
         </div>
         <div id="thumb" class="owl-carousel product-thumb">
           {% for d in dImages%}
           <div class="item">
-            
             <img src="{{ d.images.url }}" />
-            
           </div>
         {% endfor%}
         </div>
@@ -57,14 +55,15 @@
                 <input type="radio" id="star1" name="rate" value="1" />
                 <label for="star1" title="text">1 star</label>
               </div>
-              <span>{{review_count}} reviews </span>
+              <span>{{ review_count }} reviews </span>
             </div>
           </div>
           <p>
-            {{ destination.description }}
+            {{ destination.description|linebreaks }}
           </p>
-          <div class="buttons explore">
-            <a href="#"><button type="button" class="btn btn-lg explorebtn"><i class="material-icons" style="font-size:20px">place</i> &nbspLOCATION</button></a>
+          <div class="explore">
+            <i class="material-icons location-icon" >place</i> 
+            <a href="{{ maps_url }}">{{ destination.location }}</a>
           </div>
         </div>
       </div>
@@ -72,28 +71,26 @@
     </div>
     <div class="product-info-tabs">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
+        
         <li class="nav-item">
-          <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews ({{review_count}}) </a>
+          <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="true">Reviews ({{review_count}}) </a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-        </div>
 
-        <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-          <div class="review-heading">REVIEWS</div>
+        <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
           
           {%for r in reviews%}
-          <p class="mb-20"> {{r.text}}</p>
-         
-
-          
+          <!--<div class="comment">
+            <p class="mb-20"> {{r.text}}</p>
+          </div>-->
+          <div class="d-flex align-items-start flex-column comment-tab"> 
+            <p class="comment-header"><strong>{{ r.user.username|capfirst }}</strong></p>
+            <p class="comment-content">{{ r.text }}</p>
+            <small class="mt-auto comment-date">{{ r.created_at|date:"d/m/Y" }}</small>
+        </div>
           {% endfor %}
-          <button class="round-black-btn"><a href="{% url 'rate-destination' destination.id %}"   >Submit Review</a></button>
+          <button class="round-black-btn"><a href="{% url 'rate-destination' destination.id %}" class="'review-text">Write a Review</a></button>
           
         </div>
       </div>

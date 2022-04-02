@@ -17,6 +17,12 @@ class Destination(models.Model):
      def __str__(self):
           return self.name
 
+     def get_maps_url(self):
+          address = self.location.replace(' ', '+')
+          address = address.replace(',', '%2C')
+          mapsURL = "https://www.google.com/maps/search/?api=1&query="
+          return mapsURL + address;
+
 class DestinationImage(models.Model):
      destination=models.ForeignKey(Destination, default=None, on_delete=models.CASCADE)
      images=models.FileField(upload_to='static/images/')

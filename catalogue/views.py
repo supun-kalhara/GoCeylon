@@ -7,7 +7,7 @@ from unittest import loader
 from xml.etree.ElementTree import Comment
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import get_object_or_404, redirect, render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.contrib.auth.decorators import login_required
 from django.template import loader,RequestContext,Template
 from catalogue.forms import CreateUserForm, RateForm, UserImage
@@ -15,6 +15,7 @@ from .models import *
 from django.conf import settings
 
 import requests
+import time
 
 #Catalogue Page
 def catalogue_view(request, *args, **kwargs):
@@ -139,8 +140,15 @@ def destination_view(request,d_id):
         'destination':destination,
         'dImages' :dImages,
         'review_count': review_count,
-        'reviews' :reviews
+        'reviews' :reviews,
+        'maps_url' : destination.get_maps_url(),
     }
     return HttpResponse(template.render(context,request))
+
+def test_view(request, *args, **kwargs):
+    url = "https://o890xnpzu0.execute-api.ap-southeast-1.amazonaws.com/testing/ec2"
+    response = requests.get(url, params=request.GET)
+    print(response.json()["body"])
+    return HttpResponse("complete" + response.json()["body"])
 
       

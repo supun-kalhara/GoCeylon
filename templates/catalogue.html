@@ -25,8 +25,7 @@
           <div class="card_image"><img src="{{ i.image.url }}"></div>
           <div class="card_content">
             <h2 class="card_title">{{ i.name }}</h2>
-            <p class="card_text">{{ i.description }} 
-             
+            <p class="card_text">{{ i.description|truncatechars:170}} 
             </p>
             <a href="{% url 'destination-view' i.id %}" class ="btn card_btn" >Read More</a>
           </div>
