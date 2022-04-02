@@ -6,6 +6,7 @@ from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
 
+import os
 
 class Destination(models.Model):
      name = models.CharField(max_length=100, null=True)
@@ -40,12 +41,16 @@ class Review(models.Model):
      rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES,null=True)
      created_at= models.DateTimeField(auto_now_add=True, blank=True, null=True)
      
+class OCRImage(models.Model):
+     user_img = models.ImageField(upload_to='images/ocr')
+
+     def get_extension(self):
+          name, extension = os.path.splitext(self.user_img.name)
+          fixed_extension = extension.replace('.', '')
+          return fixed_extension
      
-     
-
-
-
-
+     def get_filename(self):
+            return os.path.basename(self.user_img.name)
       
 class Admin(models.Model):
      firstName = models.CharField(max_length=254, null=True)

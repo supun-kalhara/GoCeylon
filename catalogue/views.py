@@ -9,13 +9,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-
 from django.template import loader,RequestContext,Template
-
-from catalogue.forms import CreateUserForm, RateForm
-
-
+from catalogue.forms import CreateUserForm, RateForm, UserImage
 from .models import *
+from django.conf import settings
+
+import requests
 
 #Catalogue Page
 def catalogue_view(request, *args, **kwargs):
@@ -40,7 +39,6 @@ def home_view(request, *args, **kwargs):
 def logout_user(request):
     logout(request)
     return redirect('login-view')   
-
 
 #Rate Page
 @login_required(login_url='login-view')
@@ -107,7 +105,28 @@ def login_view(request, *args, **kwargs):
 
 #dashboard Page
 def dashboard_view(request, *args, **kwargs):
-    return render(request, "dashboard.html", {})
+    if request.method == 'POST':
+        form = UserImage(request.POST, request.FILES)  
+        if form.is_valid():  
+            form.save()  
+
+            img_object = form.instance  
+            #get file name, path and extension
+            file_path = img_object.user_img.path
+            file_name = img_object.get_filename()
+            file_extension = img_object.get_extension()
+            #write http request to upload to s3 bucket
+            url = (settings.AWS_S3 + file_name)
+            payload=file_path
+            content_type = 'image/' + file_extension
+            headers = {
+            'Content-Type': content_type
+            }
+            response = requests.request("PUT", url, headers=headers, data=payload)
+            return render(request, "dashboard.html", {'form': form, 'img_obj': img_object})  
+    else:  
+        form = UserImage()  
+    return render(request, "dashboard.html", {'form': form})
 
 def destination_view(request,d_id):
     #destinations = Destination.objects.get(id=d_id)
