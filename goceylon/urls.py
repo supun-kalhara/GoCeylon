@@ -31,6 +31,15 @@ from catalogue.views import (
     logout_user,
 )
 
+<<<<<<< HEAD
+=======
+from ocr.views import (
+    ocr_dashboard_view,
+)
+
+from catalogue.views import catalogue_view,index_view,home_view,base_view,login_view,destination_view,recommendation_view
+
+>>>>>>> front-end
 urlpatterns = [
     path('',index_view, name='index-view'),
     path('admin/', admin.site.urls),
@@ -41,6 +50,7 @@ urlpatterns = [
     path('base/', base_view, name='base-view'),
     path('register/',register_view, name='register-view'),
     path('login/', login_view, name='login-view'),
+<<<<<<< HEAD
     path('logout/', logout_user, name='logout'),
     path('<d_id>/destination', destination_view, name='destination-view'),
 
@@ -50,3 +60,8 @@ urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 
+=======
+    path('destination/', destination_view, name='destination-view'),
+    path('recommendation/', recommendation_view, name='recommendation-view'),
+]
+>>>>>>> front-end

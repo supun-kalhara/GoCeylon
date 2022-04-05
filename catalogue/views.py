@@ -107,6 +107,7 @@ def login_view(request, *args, **kwargs):
         return render(request, "login.html", {})   
     
 #Destination Page
+<<<<<<< HEAD
 def destination_view(request,d_id):
     #destinations = Destination.objects.get(id=d_id)
     destination = get_object_or_404(Destination, id=d_id)
@@ -129,3 +130,11 @@ def destination_view(request,d_id):
     return HttpResponse(template.render(context,request))
 
       
+=======
+def destination_view(request, *args, **kwargs):
+    return render(request, "destination.html", {})   
+
+#Recommendation Page
+def recommendation_view(request, *args, **kwargs):
+    return render(request, "recommendation.html", {})       
+>>>>>>> front-end
