@@ -1,4 +1,5 @@
 from audioop import reverse
+from django.db.models import Avg
 from cgitb import text
 from math import fabs
 from django.contrib import messages
@@ -110,13 +111,19 @@ def destination_view(request,d_id):
     #destinations = Destination.objects.get(id=d_id)
     destination = get_object_or_404(Destination, id=d_id)
     dImages= DestinationImage.objects.filter(destination=destination)
-    review_count=len(Review.objects.filter(destination=destination))
     reviews=Review.objects.filter(destination=destination)
+    review_count=len(Review.objects.filter(destination=destination))
+    average=reviews.aggregate(Avg("rate"))["rate__avg"]
+    if average==None:
+        average=0
+    average=round(average,2)
+
     template = loader.get_template('destination.html') 
     context = {
         'destination':destination,
         'dImages' :dImages,
         'review_count': review_count,
+        'average': average,
         'reviews' :reviews
     }
     return HttpResponse(template.render(context,request))

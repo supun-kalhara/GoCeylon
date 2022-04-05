@@ -23,6 +23,7 @@ class DestinationImage(models.Model):
      def __str__(self):
           return self.destination.name
 
+
 RATE_CHOICES = [
      (1, 'Terrible'),
      (2, 'Bad'),
