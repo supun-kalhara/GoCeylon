@@ -118,7 +118,7 @@ def dashboard_view(request, *args, **kwargs):
             file_extension = img_object.get_extension()
             #write http request to upload to s3 bucket
             url = (settings.AWS_S3 + file_name)
-            payload=file_path
+            payload=open(file_path, 'rb')
             content_type = 'image/' + file_extension
             headers = {
             'Content-Type': content_type
@@ -136,6 +136,22 @@ def destination_view(request,d_id):
     review_count=len(Review.objects.filter(destination=destination))
     reviews=Review.objects.filter(destination=destination)
     template = loader.get_template('destination.html') 
+    context = {
+        'destination':destination,
+        'dImages' :dImages,
+        'review_count': review_count,
+        'reviews' :reviews,
+        'maps_url' : destination.get_maps_url(),
+    }
+    return HttpResponse(template.render(context,request))
+
+def destination_view2(request,d_id):
+    #destinations = Destination.objects.get(id=d_id)
+    destination = get_object_or_404(Destination, id=d_id)
+    dImages= DestinationImage.objects.filter(destination=destination)
+    review_count=len(Review.objects.filter(destination=destination))
+    reviews=Review.objects.filter(destination=destination)
+    template = loader.get_template('destination2.html') 
     context = {
         'destination':destination,
         'dImages' :dImages,
