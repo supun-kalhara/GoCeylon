@@ -145,26 +145,4 @@ def destination_view(request,d_id):
     }
     return HttpResponse(template.render(context,request))
 
-def destination_view2(request,d_id):
-    #destinations = Destination.objects.get(id=d_id)
-    destination = get_object_or_404(Destination, id=d_id)
-    dImages= DestinationImage.objects.filter(destination=destination)
-    review_count=len(Review.objects.filter(destination=destination))
-    reviews=Review.objects.filter(destination=destination)
-    template = loader.get_template('destination2.html') 
-    context = {
-        'destination':destination,
-        'dImages' :dImages,
-        'review_count': review_count,
-        'reviews' :reviews,
-        'maps_url' : destination.get_maps_url(),
-    }
-    return HttpResponse(template.render(context,request))
-
-def test_view(request, *args, **kwargs):
-    url = "https://o890xnpzu0.execute-api.ap-southeast-1.amazonaws.com/testing/ec2"
-    response = requests.get(url, params=request.GET)
-    print(response.json()["body"])
-    return HttpResponse("complete" + response.json()["body"])
-
       

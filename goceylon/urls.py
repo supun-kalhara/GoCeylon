@@ -23,7 +23,6 @@ from catalogue.views import (
     Rate,
     catalogue_view,
     destination_view,
-    destination_view2,
     register_view,
     index_view,
     home_view,
@@ -31,7 +30,6 @@ from catalogue.views import (
     login_view,
     logout_user,
     dashboard_view,
-    test_view
 )
 
 urlpatterns = [
@@ -46,10 +44,7 @@ urlpatterns = [
     path('login/', login_view, name='login-view'),
     path('logout/', logout_user, name='logout'),
     path('<d_id>/destination', destination_view, name='destination-view'),
-    path('<d_id>/destination2', destination_view2, name='destination-view2'),
     path('dashboard/', dashboard_view, name='dashboard-view'),
-    path('test/', test_view, name='test-view'),
-
 
 ]
 
