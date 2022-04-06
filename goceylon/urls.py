@@ -45,6 +45,8 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('<d_id>/destination', destination_view, name='destination-view'),
     path('recommendation/', recommendation_view, name='recommendation-view'),
+   
+    
 
 ]
 

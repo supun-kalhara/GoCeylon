@@ -9,9 +9,10 @@ from django.contrib.auth.models import User
 
 class Destination(models.Model):
      name = models.CharField(max_length=100, null=True)
-     location= models.CharField(max_length=100, null=True)
+     location= models.CharField(max_length=1000, null=True)
      image=models.ImageField(null=True,blank=False)
      description = models.TextField(max_length=3500, null=True)
+     average_rate =models.DecimalField(null=True, max_digits=20, decimal_places=2)
 
      def __str__(self):
           return self.name
@@ -40,14 +41,7 @@ class Review(models.Model):
      destination = models.ForeignKey(Destination,null=True,on_delete=models.SET_NULL)
      rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES,null=True)
      created_at= models.DateTimeField(auto_now_add=True, blank=True, null=True)
-     
-     
-     
-
-
-
-
-      
+          
 class Admin(models.Model):
      firstName = models.CharField(max_length=254, null=True)
      lastName = models.CharField(max_length=1000, null=True)

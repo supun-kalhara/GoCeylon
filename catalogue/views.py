@@ -118,6 +118,9 @@ def destination_view(request,d_id):
         average=0
     average=round(average,2)
 
+    destination.average_rate=average
+    destination.save()
+
     template = loader.get_template('destination.html') 
     context = {
         'destination':destination,
@@ -128,9 +131,9 @@ def destination_view(request,d_id):
     }
     return HttpResponse(template.render(context,request))
 
-      
-def recommendation_view(request, *args, **kwargs):
-    destinations = Destination.objects.all()
+#Recommendation page     
+def recommendation_view(request,*args, **kwargs):
+    destinations = Destination.objects.all().order_by('-average_rate')
     
-    context = {'destinations': destinations}
+    context = {'destinations':destinations }
     return render(request, "recommendation.html",context)

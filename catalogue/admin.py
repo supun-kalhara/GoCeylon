@@ -5,6 +5,7 @@ from .models import *
 admin.site.register(Review)
 admin.site.register(Admin)
 
+
 class DestionationImageAdmin(admin.StackedInline):
     model=DestinationImage
 

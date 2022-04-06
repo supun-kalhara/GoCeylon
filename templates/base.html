@@ -25,6 +25,7 @@
                 <li class="nav-item1"><a href="{% url 'home-view' %}">Home</a></li>
                 <li class="nav-item1"><a href="#">Translate</a></li>
                 <li class="nav-item1"><a href="{% url 'catalogue-view' %}">Catalogue</a></li>
+                <li class="nav-item1"><a href="{% url 'recommendation-view' %}">Travelers' Choice</a></li>
                 {% if request.user.is_authenticated %}
                     <li class="nav-item1"><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
