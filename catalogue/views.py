@@ -15,6 +15,7 @@ from .models import *
 from django.conf import settings
 
 import requests
+import json
 import time
 
 #Catalogue Page
@@ -124,7 +125,20 @@ def dashboard_view(request, *args, **kwargs):
             'Content-Type': content_type
             }
             response = requests.request("PUT", url, headers=headers, data=payload)
-            return render(request, "dashboard.html", {'form': form, 'img_obj': img_object})  
+            context = {
+                'form': form,
+                'img_obj': img_object,
+                'filename': file_name,
+            }
+            time.sleep(1)
+
+            url = "https://o890xnpzu0.execute-api.ap-southeast-1.amazonaws.com/testing/ec2?filename=" + file_name
+            response = requests.request("GET", url)
+            time.sleep(3)
+            format = response.json()
+            body = format["body"]
+            # return render(request, "dashboard.html", context)
+            return HttpResponse(body)
     else:  
         form = UserImage()  
     return render(request, "dashboard.html", {'form': form})
