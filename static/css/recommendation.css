@@ -15,6 +15,18 @@
     font-family: 'Lato', 'Arial', sans-serif;
 }
 
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
+
 html {
   background-color: #c3c7ca;
   background-image: url('/static/img/bkg2.jpg');

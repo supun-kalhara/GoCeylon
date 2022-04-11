@@ -15,8 +15,20 @@
     font-family: 'Lato', 'Arial', sans-serif;
 }
 
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
+
 html {
-  background-color: #c3c7ca;
+  background:  #c3c7ca;
 }
 
 body {
@@ -63,8 +75,9 @@ h1 {
   padding: 0.8rem;
   font-size: 14px;
   text-transform: uppercase;
+  text-decoration: none;
   border-radius: 4px;
-  font-weight: 400;
+  font-weight: 500;
   display: block;
   width: 100%;
   cursor: pointer;

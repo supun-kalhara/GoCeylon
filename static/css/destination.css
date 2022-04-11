@@ -2,6 +2,57 @@
 	padding: 40px 0;
 	font-family: "Poppins", sans-serif;
   }
+
+
+  .star-ratings-css {
+	unicode-bidi: bidi-override;
+	color: #c5c5c5;
+	font-size: 25px;
+	height: 25px;
+	width: 100px;
+	margin: 0 auto;
+	position: relative;
+	padding: 0;
+	text-shadow: 0px 1px 0 #a2a2a2;
+	margin-left: -1px;
+	margin-bottom: 15px;
+}
+
+.star-ratings-css-top {
+	color: #e7711b;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: block;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.star-ratings-css-bottom {
+	padding: 0;
+	display: block;
+	z-index: 0;
+}
+
+.star-ratings-sprite {
+	background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+	font-size: 0;
+	height: 21px;
+	line-height: 0;
+	overflow: hidden;
+	text-indent: -999em;
+	width: 110px;
+	margin: 0 auto;
+}
+
+.star-ratings-sprite-rating {
+	background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+	background-position: 0 100%;
+	float: left;
+	height: 21px;
+	display: block;
+}
   .heading-section {
 	text-align: center;
 	margin-bottom: 20px;
@@ -139,7 +190,13 @@
   .rate:not(:checked) > label:hover ~ label {
 	color: #deb217;
   }
-
+  .rate > input:checked + label:hover,
+  .rate > input:checked + label:hover ~ label,
+  .rate > input:checked ~ label:hover,
+  .rate > input:checked ~ label:hover ~ label,
+  .rate > label:hover ~ input:checked ~ label {
+	color: #c59b08;
+  }
   .product-dtl p {
 	font-size: 15px;
 	line-height: 24px;
@@ -181,7 +238,6 @@
 	text-align: center;
   }
 
-  
   .round-black-btn {
 	border-radius: 4px;
 	background: #1f727e;
@@ -190,7 +246,9 @@
 	display: inline-block;
 	margin-top: 20px;
 	transition: all 0.5s ease-in-out 0s;
+	cursor: pointer;
   }
+
   .round-black-btn:hover,
   .round-black-btn:focus {
 	background-color: #1a222b;
