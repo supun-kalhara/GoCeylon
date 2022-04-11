@@ -23,7 +23,9 @@
         <div class="card">
           <div class="card_image"><img src="{{ destination.image.url }}"></div>
           <div class="card_content">
-            <h2 class="card_title">{{destination.name}}<br>{{destination.average_rate}}</h2>
+            <h2 class="card_title">{{destination.name}}</h2>
+            <h3>Rating : {{destination.average_rate}}</h3>
+            <hr>
             <p class="card_text">{{destination.description}}</p>
             <a href="{% url 'destination-view' destination.id %}"><button class="btn card_btn">Read More</button></a>
           </div>
