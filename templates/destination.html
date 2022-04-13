@@ -55,8 +55,9 @@
         <p>
           {{ destination.description }}
         </p>
-        <div class="buttons explore">
-          <a href="{{ destination.location }}"><button type="button" class="btn btn-lg explorebtn"><i class="material-icons" style="font-size:20px">place</i> &nbspLOCATION</button></a>
+        <div class="explore">
+          <i class="material-icons location-icon" >place</i> 
+          <a href="{{ maps_url }}">{{ destination.location }}</a>
         </div>
       </div>
     </div>
