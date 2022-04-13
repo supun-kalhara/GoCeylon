@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/dashboard2.css' %}" />
+    <script src="{% static '/js/base.min.js' %}"></script>
+    
+
+</head>
+
+<body>
+  <title>Translate</title>
+
+<div class="background">
+  <div class="form-wrapper">
+    <div class="title" style='color:black'>Get Images & Documents with Sinhala Text Translated</div>
+      <form method="POST" action="{% url 'translate-view' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if img_obj %}
+          <img src="{{ img_obj.user_img.url}}" alt="uploaded_image" style="max-height:150px"> 
+        {% endif %}
+        {% if body %}
+          <p class="text-body">{{ body }}</p> 
+        {% endif %}
+        <div class="instructions process-element">Select the translation language:</div>
+        <section class="container">
+          <div class="dropdown">
+
+            <select name="one" class="dropdown-select">
+              <option value="en">English</option>
+              <option value="fr">French</option>
+              <option value="es">Spanish</option>
+              <option value="ja">Japanese</option>
+              <option value="sv">Swedish</option>
+              <option value="de">German</option>
+            </select>
+
+            <input type="hidden" name="text-body" value="{{ body }}"}>
+            
+          </div>
+        </section>
+
+        <button type='submit' class="link" id="submit_butn">Continue</button>
+      </form>
+        
+  </div>
+  <!--<div class="step">Step 2</div>
+  <div class="instructions">Please Wait while we Process your Image</div>
+  <div style="height:20px"></div>-->
+  
+  <!--<div style="height:70px"></div>
+  <div class="step">Step 3</div>
+  <div class="instructions">Your new document will be ready to download immediately. after the download is complete, any remaining files uploaded will be purged from our server.</div>
+  -->
+</div>
+</body>
+</html>
+{% endblock %}
+

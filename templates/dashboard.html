@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/dashboard2.css' %}" />
+    <script src="{% static '/js/base.min.js' %}"></script>
+    
+
+</head>
+
+<body>
+  <title>Translate</title>
+
+<div class="background">
+  <div class="form-wrapper">
+    <div class="title" style='color:black'>Get Images & Documents with Sinhala Text Translated</div>
+    <div class="step step1">Step 1</div>
+    <div class="instructions" >Select the Image that contains Sinhala Text<br> Then Click Upload</div>
+      <div>
+        <p class="accuracy-info">For better accuracy:</p>
+        <ul class="info-list">
+          <li>Make sure the image only contains sinhala text</li>
+          <li>Try to include as little backround elements as possible</li>
+          <li>Use a clear image</li>
+        </ul>  
+      </div>
+
+      <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.user_img }}  
+        <button type='submit' class="link" id="submit_butn" onclick="clicked()" >Upload</button>
+      </form>
+      <div id="instructions2" style="display: none">
+        <div class="step step2">Step 2</div>
+        <div class="instructions process-element">Please Wait <span style='color: rgb(245, 86, 86)'>a few seconds</span> while we Process your Image</div>
+      </div>
+  </div>
+  <!--<div class="step">Step 2</div>
+  <div class="instructions">Please Wait while we Process your Image</div>
+  <div style="height:20px"></div>-->
+  
+  <!--<div style="height:70px"></div>
+  <div class="step">Step 3</div>
+  <div class="instructions">Your new document will be ready to download immediately. after the download is complete, any remaining files uploaded will be purged from our server.</div>
+  -->
+</div>
+</body>
+
+<script>
+
+  function clicked(){
+    document.getElementById("instructions2").style.display = "block";
+  }
+
+</script>
+
+</html>
+{% endblock %}
