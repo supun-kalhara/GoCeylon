@@ -17,6 +17,7 @@ from django.conf import settings
 import requests
 import json
 import time
+import googletrans
 
 #Catalogue Page
 def catalogue_view(request, *args, **kwargs):
@@ -125,20 +126,23 @@ def dashboard_view(request, *args, **kwargs):
             'Content-Type': content_type
             }
             response = requests.request("PUT", url, headers=headers, data=payload)
-            context = {
-                'form': form,
-                'img_obj': img_object,
-                'filename': file_name,
-            }
             time.sleep(1)
 
             url = "https://o890xnpzu0.execute-api.ap-southeast-1.amazonaws.com/testing/ec2?filename=" + file_name
             response = requests.request("GET", url)
             time.sleep(3)
             format = response.json()
-            body = format["body"]
-            # return render(request, "dashboard.html", context)
-            return HttpResponse(body)
+            body = (format["body"]).replace("", "")
+            if (not body or body == ""):
+                return HttpResponse("Error Extracting Text from Image! Please Make Sure the File Type is 'jpg' or 'png'")
+
+            context = {
+                'form': form,
+                'img_obj': img_object,
+                'filename': file_name,
+                'body': body
+            }
+            return render(request, "dashboard_processed.html", context)
     else:  
         form = UserImage()  
     return render(request, "dashboard.html", {'form': form})
@@ -159,4 +163,19 @@ def destination_view(request,d_id):
     }
     return HttpResponse(template.render(context,request))
 
-      
+def translated_view(request, *args, **kwargs):
+    if request.method == 'POST':
+        body = request.POST.get('text-body')
+        user_lang = request.POST.get('one')
+        translator = googletrans.Translator()
+        translate = translator.translate(body, dest=user_lang)
+        text = translate.text
+        context = {
+            'text': text
+        }
+        return render(request, "dashboard_translated.html", context)
+
+    else:
+        return HttpResponse("error")
+
+    
