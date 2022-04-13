@@ -7,6 +7,7 @@ admin.site.register(Review)
 admin.site.register(Admin)
 admin.site.register(OCRImage)
 
+
 class DestionationImageAdmin(admin.StackedInline):
     model=DestinationImage
 
