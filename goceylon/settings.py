@@ -16,6 +16,8 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#aws variables
+AWS_S3 = "https://qprabnd93g.execute-api.ap-southeast-1.amazonaws.com/ocrDev/apigw-s3-bkt-tess/"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -133,8 +135,12 @@ BS_ICONS_CACHE = os.path.join(MEDIA_ROOT, 'icon_cache')
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL='/images/'
 
 #Static files directory
 STATICFILES_DIRS = [
+    #BASE_DIR/'static'
    os.path.join(BASE_DIR, 'static'),
 ]
+MEDIA_ROOT =BASE_DIR / 'static/images'
+STATIC_ROOT=BASE_DIR / 'staticfiles'

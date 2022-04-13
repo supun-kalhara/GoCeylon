@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static '/css/index.css' %}">
 
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static '/img/favicon-32x32.png' %}" type="image/x-icon">
+
 </head>
 
 <body>
@@ -31,7 +34,7 @@
     <script>
 
         var timer = setTimeout(function(){
-            window.location="{% url 'home-view' %}"},1950);
+            window.location="{% url 'home-view' %}"},1000);
     
     </script>
 
