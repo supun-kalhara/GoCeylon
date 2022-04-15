@@ -19,28 +19,22 @@
     <h1>LOCATIONS</h1>
     <ul class="cards">
       {% for i in destinations %}
-      
       <li class="cards_item">
         <div class="card">
           <div class="card_image"><img src="{{ i.image.url }}"></div>
           <div class="card_content">
             <h2 class="card_title">{{ i.name }}</h2>
-            <p class="card_text">{{ i.description|truncatechars:170}} 
-            </p>
-            <a href="{% url 'destination-view' i.id %}" class ="btn card_btn" >Read More</a>
+            <h3>Rating : {{ i.average_rate }}</h3>
+            <hr>
+            <p class="card_text">{{ i.description|truncatechars:190 }} </p>
+            <a href="{% url 'destination-view' i.id %}"><button class="btn card_btn">Read More</button></a>
           </div>
         </div>
-      </li>
-       
-      {% endfor %}
-      
+      </li> 
+      {% endfor %} 
     </ul>
   </div>
-  
-
 </body>
-
-
 
 </html>
 

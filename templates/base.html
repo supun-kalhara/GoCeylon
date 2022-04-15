@@ -28,10 +28,11 @@
                 <li class="nav-item1"><a href="{% url 'home-view' %}">Home</a></li>
                 <li class="nav-item1"><a href="{% url 'dashboard-view' %}">Translate</a></li>
                 <li class="nav-item1"><a href="{% url 'catalogue-view' %}">Catalogue</a></li>
+                <li class="nav-item1"><a href="{% url 'recommendation-view' %}">Recommendation</a></li>
                 {% if request.user.is_authenticated %}
-                    <li class="nav-item1"><a href="{% url 'logout' %}">Logout</a></li>
+                    <li class="nav-item2"><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
-                    <li class="nav-item1"><a href="{% url 'login-view' %}">Login</a></li>
+                    <li class="nav-item2"><a href="{% url 'login-view' %}">Login</a></li>
                 {% endif %}
             </ul>
         </nav>

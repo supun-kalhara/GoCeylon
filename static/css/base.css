@@ -54,11 +54,12 @@
 .navbar1 ul {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(5,100px);
+  grid-template-columns: repeat(7,100px);
   justify-self: end;
-  margin-right: -105px;
+  margin-right: -130px;
   
 }
+
 
 .nav-item1 a {
   color: #000;
@@ -69,7 +70,22 @@
   
 }
 
+.nav-item2 a {
+  color: #000;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease-out;
+  margin-left: 60px;
+  
+}
+
 .nav-item1 a:hover {
+  color: #3498db;
+  
+}
+
+.nav-item2 a:hover {
   color: #3498db;
   
 }
@@ -199,6 +215,16 @@
     text-decoration: none;
     transition: color 0.3s ease-out;
     
+  }
+
+  .nav-item2 a {
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease-out;
+    margin-left: 0px;
+
   }
 
   
