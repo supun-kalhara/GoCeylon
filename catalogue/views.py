@@ -195,3 +195,4 @@ def recommendation_view(request,*args, **kwargs):
     
     context = {'destinations':destinations }
     return render(request, "recommendation.html",context)
+
