@@ -28,6 +28,9 @@
 	left: 0;
 	overflow: hidden;
 }
+.item img{
+	object-fit: cover;
+}
 
 .star-ratings-css-bottom {
 	padding: 0;
@@ -246,11 +249,8 @@
 	display: inline-block;
 	margin-top: 20px;
 	transition: all 0.5s ease-in-out 0s;
-<<<<<<< HEAD
 	border-style: none;
-=======
 	cursor: pointer;
->>>>>>> model-updates
   }
 
   .round-black-btn:hover,
@@ -311,6 +311,7 @@
   
   .product-info-tabs {
 	margin-top: 25px;
+	width: 870px;
   }
   .product-info-tabs .nav-tabs {
 	border-bottom: 2px solid #d8d8d8;

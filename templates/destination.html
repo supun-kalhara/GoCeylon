@@ -28,12 +28,18 @@
       <div class="col-md-6">
         <div class="item1">
         <div id="slider" class="owl-carousel product-slider">
-          <div class="card_image"><img src="{{ destination.image.url }}"></div> 
+          {% for d in dImages%}
+            <div class="item">
+              <div class="card_image">
+                <img style="max-height: 405px; object-fit: scale-down;" src="{{ d.images.url }}">
+              </div>
+            </div>
+          {% endfor%}
         </div>
         <div id="thumb" class="owl-carousel product-thumb">
           {% for d in dImages%}
           <div class="item">
-            <img src="{{ d.images.url }}"/>
+            <img src="{{ d.images.url }}"/ style="object-fit:cover; height: 82px;">
           </div>
           {% endfor%}
         </div>
@@ -53,7 +59,7 @@
           </div>
         </div>
         <p>
-          {{ destination.description }}
+          {{ destination.description| linebreaks }}
         </p>
         <div class="explore">
           <i class="material-icons location-icon" >place</i> 
@@ -61,7 +67,7 @@
         </div>
       </div>
     </div>
-    <div class="product-info-tabs">
+    <div class="product-info-tabs ">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         
         <li class="nav-item">

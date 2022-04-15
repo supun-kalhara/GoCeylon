@@ -71,6 +71,12 @@ h1 {
   vertical-align: middle;
 }
 
+.card_image{
+  width: 367px;
+  height: 188px;
+  object-fit: cover
+}
+
 .btn {
   color: #f7f2f2;
   background-color: #1f727e;
@@ -142,7 +148,6 @@ h1 {
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: capitalize;
-  margin-bottom: 8px;
   margin-bottom: -5px;
 }
 
@@ -159,6 +164,10 @@ h1 {
   font-size: 13px;
   margin-top: 35px;
   text-align: center;
+}
+
+.card_btn{
+  align-self: flex-end;
 }
 
 
